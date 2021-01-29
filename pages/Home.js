@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Post from "../pages/common/post.js";
-import { profileData, postData } from "../data/post.js/postdata.js";
+import { profileData, state } from "../data/post.js/postdata.js";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { render } from "react-dom";
 
@@ -83,42 +83,25 @@ const styles = StyleSheet.create({
 });
 
 class PFD extends Component {
-	state = {
-		products: [
-		{ product: "Rice", id: 1 },
-		{ product: "Sweets", id: 2 },
-		{ product: "Fruits", id: 3 },
-		{ product: "Animals", id: 4 },
-		{ product: "humans", id: 5 },
-		{ product: "sport", id: 6 },
-		{ product: "kitchen", id: 7 },
-		{ product: "childrens", id: 8 },
-		{ product: "men", id: 9 },
-		{ product: "old people", id: 10 },
-		{ product: "shafty", id: 11 },
-		{ product: "transport", id: 12 }
-		] };
-
-		render() {
-			return (
-			
-				<ScrollView style={styles.scrollview}>
-				{this.state.products.map((post, index) => (
-			<View key={post.id} style={styles.item}>
-			<Post
-					profileName={postData[0].name}
-					profileDesc={post.product}
-					postProfileImageSrc={postData[0].postProfileImageSrc}
-					postImageSrc={postData[0].postImageSrc}
-				/>
-			</View>
-			))}
+	
+	render() {
+		return (
+			<ScrollView style={styles.scrollview}>
+				{state.products.map((post, index) => (
+					<View key={post.id} style={styles.item}>
+						<Post
+							profileName={post.name}
+							profileDesc="teste"
+							postProfileImageSrc={post.postProfileImageSrc}
+							postImageSrc={post.postImageSrc}
+						/>
+					</View>
+				))}
 			</ScrollView>
-			);
-			}
-			
+		);
+	}
 }
-	  
+
 export default function Home({ navigation }) {
 	return (
 		<SafeAreaView style={styles.AndroidSafeArea}>
